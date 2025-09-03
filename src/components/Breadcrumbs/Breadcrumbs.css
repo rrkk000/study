@@ -1,0 +1,61 @@
+.breadcrumbs {
+  font-size: 15px;
+  color: #999;
+  font-weight: 400; 
+  margin: 30px 0 5px 180px;
+  cursor: pointer;
+}
+
+.breadcrumbs nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.breadcrumb-item {
+  color: #828282;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+.breadcrumb-item:hover {
+  color: #444548;
+}
+
+.breadcrumb-current {
+  color: #000;
+  white-space: nowrap;
+}
+
+.breadcrumb-separator {
+  margin: 0 5px;
+}
+
+/* телефон*/
+@media (max-width: 490px) {
+  .breadcrumbs {
+    margin: 10px 20px;
+    font-size: 13px;
+    max-width: calc(100% - 30px);
+  }
+
+  .breadcrumbs nav {
+    display: flex;
+    flex-wrap: wrap;   
+    align-items: center;
+  }
+
+  .breadcrumb-item,
+  .breadcrumb-separator {
+    white-space: nowrap;
+  }
+
+  .breadcrumb-current {
+    flex-basis: 100%;
+    margin-top: 6px;
+  }
+
+  .breadcrumb-separator:last-of-type {
+    display: inline; 
+  }
+}

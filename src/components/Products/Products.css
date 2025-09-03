@@ -1,0 +1,164 @@
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px 20px;
+  margin: 35px 180px 0 180px; 
+  padding-bottom: 50px; 
+}
+
+.product-card {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #eae9e9;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 290px;
+  width: 280px;
+  padding: 8px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: #bbb;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  background-color: #EB5757;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 16px;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+.product-image {
+  width: 100%;
+  max-height: 205px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 8px;
+}
+
+.promo-code {
+  font-size: 9px;
+  font-weight: 400;
+  color: #888888;
+  margin: 0 0 3px 0;
+}
+
+.product-title {
+  font-size: 16px;  
+  font-weight: 500;
+  color: #000;
+  margin: 0 0 6px 0;
+}
+
+.product-prices {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.old-price {
+  font-size: 15px;
+  color: #828282;
+  font-weight: 300;
+  text-decoration: line-through;
+}
+
+.current-price {
+  font-size: 15px;
+  color: #000;
+  font-weight: 400;
+}
+
+.product-icons {
+  position: absolute;
+  right: 19px;
+  bottom: 8px;
+  display: flex;
+  gap: 25px; 
+  align-items: center;
+}
+
+/* сердечко */
+.icon.heart-icon {
+  font-size: 23px; 
+  color: #000; 
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.icon.heart-icon.liked {
+  color: #ff4d6d; 
+  animation: heart-pop 0.3s ease forwards;
+}
+
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* корзина */
+.cart-wrapper {
+  position: relative;
+}
+
+.icon.cart-icon {
+  font-size: 19px;
+  color: #333;
+}
+
+.cart-added {
+  width: 16px;  
+  height: 16px;
+  border: 2px solid #27ae60;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  color: #27ae60;
+  font-size: 8px;
+}
+
+
+/* телефон */
+@media (max-width: 490px) {
+  .products-grid {
+    grid-template-columns: 1fr; 
+    gap: 30px;
+    margin: 20px 15px 0 15px;
+  }
+
+  .product-card {
+    width: 95%; 
+    height: auto; 
+  }
+
+  .product-image {
+    max-height: 200px; 
+  }
+
+  .product-icons {
+    right: 12px;
+    bottom: 8px;
+    gap: 15px;
+  }
+}

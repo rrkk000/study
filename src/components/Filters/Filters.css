@@ -1,0 +1,73 @@
+.filters {
+  display: flex;
+  gap: 20px;
+  margin: 20px 180px; 
+}
+
+.filter-select {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.filter-select select:focus {
+  outline: none; 
+  box-shadow: none; 
+}
+
+.filter-select label {
+  font-size: 11px;
+  color: #4F4F4F;
+  margin: 10px 0 10px 15px;
+  letter-spacing: 0.5px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.filter-select select {
+  width: 100%;
+  padding: 11px 40px 11px 16px;
+  font-size: 12px;
+  border: none;
+  background-color: #F2F2F2;
+  appearance: none; 
+  cursor: pointer;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #000;
+  pointer-events: none;
+}
+
+/* телефон */
+@media (max-width: 490px) {
+  .filters {
+    flex-direction: column; 
+    gap: 15px;
+    margin: 18px; 
+  }
+
+  .filter-select {
+    width: 70%; 
+  }
+
+  .filter-select label {
+    margin-left: 10px;
+  }
+
+  .filter-select select {
+    padding: 10px 35px 10px 12px; 
+    font-size: 13px;
+  }
+
+  .select-arrow {
+    right: 12px; 
+  }
+}
