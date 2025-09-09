@@ -1,14 +1,19 @@
-.page-title h1 {
-  font-size: 32px;
-  font-weight: 640;
-  margin: 0 0 20px 180px;
-  margin-top: 23px;
+.page-title {
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
-/* телефон */
-@media (max-width: 490px) {
-  .page-title h1 {
-    font-size: 25px; 
-    margin: 23px 20px; 
+.page-title__heading {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  margin-left: 180px;
+}
+
+/* мобильная версия */
+@media (max-width: 600px) {
+  .page-title__heading {
+    font-size: 25px;
+    margin-left: 20px; 
   }
 }

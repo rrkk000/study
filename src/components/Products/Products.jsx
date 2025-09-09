@@ -35,11 +35,9 @@ export default function Products() {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Обработчики фильтров с консолью и URL
   const handleSortChange = (e) => {
     const newSort = e.target.value;
     setSort(newSort);
-    console.log('Sort changed:', newSort);
 
     const params = new URLSearchParams(window.location.search);
     params.set('sort', newSort);
@@ -50,7 +48,6 @@ export default function Products() {
   const handleMaterialChange = (e) => {
     const newMaterial = e.target.value;
     setMaterial(newMaterial);
-    console.log('Material changed:', newMaterial);
 
     const params = new URLSearchParams(window.location.search);
     params.set('material', newMaterial);
@@ -66,13 +63,12 @@ export default function Products() {
     setCartItems(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  // фильтрация и сортировка карточек
   let filtered = products.filter(p => material === 'Все' || p.material === material);
   if (sort === 'Цена по возрастанию') filtered = [...filtered].sort((a,b) => a.price - b.price);
   if (sort === 'Цена по убыванию') filtered = [...filtered].sort((a,b) => b.price - a.price);
 
   return (
-    <>
+    <div className="wrapper">
       <div className="filters">
         <div className="filter-select">
           <label>Сортировать по:</label>
@@ -95,35 +91,38 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="products-grid">
-        {filtered.map(p => (
-          <div key={p.id} className="product-card">
-            {p.discount && <div className="discount-badge">Скидка</div>}
-            <img src={p.image} alt={p.title} className="product-image" />
-            <div className="product-info">
-              {p.promo && <p className="promo-code">{p.promo}</p>}
-              <h3 className="product-title">{p.title}</h3>
-              <div className="product-prices">
-                {p.oldPrice && <span className="old-price">{p.oldPrice} ₽</span>}
-                <span className="current-price">{p.price} ₽</span>
-              </div>
-            </div>
-
-            <div className="product-icons">
-              {p.showCartIcon && (
-                <div className="cart-wrapper" onClick={() => toggleCart(p.id)}>
-                  {!cartItems[p.id] ? <FiShoppingCart className="icon cart-icon" /> :
-                    <div className="cart-added"><FaCheck className="check-icon" /></div>
-                  }
+      {/* Обёртка для сетки товаров с отступами */}
+      <div className="products-wrapper">
+        <div className="products-grid">
+          {filtered.map(p => (
+            <div key={p.id} className="product-card">
+              {p.discount && <div className="discount-badge">Скидка</div>}
+              <img src={p.image} alt={p.title} className="product-image" />
+              <div className="product-info">
+                {p.promo && <p className="promo-code">{p.promo}</p>}
+                <h3 className="product-title">{p.title}</h3>
+                <div className="product-prices">
+                  {p.oldPrice && <span className="old-price">{p.oldPrice} ₽</span>}
+                  <span className="current-price">{p.price} ₽</span>
                 </div>
-              )}
-              <div className="heart-wrapper" onClick={() => toggleLike(p.id)}>
-                <IoIosHeartEmpty className={`icon heart-icon ${likedItems[p.id] ? 'liked' : ''}`} />
+              </div>
+
+              <div className="product-icons">
+                {p.showCartIcon && (
+                  <div className="cart-wrapper" onClick={() => toggleCart(p.id)}>
+                    {!cartItems[p.id] ? <FiShoppingCart className="icon cart-icon" /> :
+                      <div className="cart-added"><FaCheck className="check-icon" /></div>
+                    }
+                  </div>
+                )}
+                <div className="heart-wrapper" onClick={() => toggleLike(p.id)}>
+                  <IoIosHeartEmpty className={`icon heart-icon ${likedItems[p.id] ? 'liked' : ''}`} />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
